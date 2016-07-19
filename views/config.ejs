@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script>
+    function sendData(){
+      if(event.keyCode == 13){
+        $("form").submit();
+      }
+    }
+  </script>
+  <link href="/stylesheets/jumbotron.css" rel="stylesheet">
+<link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+<link href="/stylesheets/dashboard.css" rel="stylesheet">
+<script src="/js/bootstrap.min.js"></script>
+<title>Somunity Management System</title>
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Library Management System</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <form class="navbar-form navbar-right" action="list" method="post">
+            <input type="text" name="keyword" class="form-control" placeholder="Search..." onkeyup="sendData()">
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li class="active"><a href="#">Book List<span class="sr-only">(current)</span></a></li>
+            <li><a href="#">Book Register</a></li>
+            <li><a href="#">Book Delete</a></li>
+            <li><a href="#">Book Update</a></li>
+          </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">Book List</h1>
+
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>IMG</th>
+                  <th>제목</th>
+                  <th>ISBN</th>
+                  <th>가격</th>
+                  <th>저자</th>
+                </tr>
+              </thead>
+              <tbody>
+                <%
+                  for(var i=0; i<data.length; i++){
+                 %>
+                <tr>
+                  <td><img src=<%=data[i].bimgurl%>></td>
+                  <td><%=data[i].btitle%></td>
+                  <td><%=data[i].bisbn%></td>
+                  <td><%=data[i].bprice%></td>
+                  <td><%=data[i].bauthor%></td>
+                </tr>
+                <%
+                  }
+                 %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200" preserveAspectRatio="none" style="visibility: hidden; position: absolute; top: -100%; left: -100%;"><defs></defs><text x="0" y="10" style="font-weight:bold;font-size:10pt;font-family:Arial, Helvetica, Open Sans, sans-serif;dominant-baseline:middle">200x200</text></svg></body>
+</html>

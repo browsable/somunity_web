@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "default": "somaslack",
+    "SomaSlack": "somaslack"
+  }
+}
