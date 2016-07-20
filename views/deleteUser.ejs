@@ -29,7 +29,7 @@
             <a class="navbar-brand" href="/">Somunity Management System</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-            <form class="navbar-form navbar-right" action="userview" method="post">
+            <form class="navbar-form navbar-right" action="users" method="post">
                 <input type="text" name="keyword" class="form-control" placeholder="Search..." onkeyup="sendData()">
             </form>
         </div>
@@ -40,14 +40,14 @@
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
-                <li class="active"><a href="#">User List<span class="sr-only">(current)</span></a></li>
-                <li><a href="#">User Register</a></li>
-                <li><a href="#">User Delete</a></li>
-                <li><a href="#">User Update</a></li>
+                <li><a href="/users" method="get">User List</a></li>
+                <li><a href="/users" method="post">User Register</a></li>
+                <li><a href="/users" method="put">User Update</a></li>
+                <li class="active"><a href="/users" method="delete">User Delete<span class="sr-only">(current)</span></a></li>
             </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <h1 class="page-header">User List</h1>
+            <h1 class="page-header">User Delete</h1>
 
             <div class="table-responsive">
                 <table class="table table-striped">

@@ -24,11 +24,11 @@
         );
         res.end();
     });
-    router.get("/configview", function (req, res) {
+    router.get("/configView", function (req, res) {
         res.send('Hello World');
         //controller.listAll(req,res);
     });
-    router.get("/chatview", function (req, res) {
+    router.get("/chatView", function (req, res) {
         res.writeHead(301,
             {Location: 'https://somaslack.firebaseapp.com/'}
         );
@@ -46,10 +46,5 @@
             uPw = data.password;
         res.send(uId + ' ' + uPw);
     });
-    router.get("/userview", function (req, res) {
-        controller.listAll(req,res);
-    });
-    router.post("/userview", function (req, res) {
-        controller.listSearch(req,res);
-    });
+
     module.exports = router;
