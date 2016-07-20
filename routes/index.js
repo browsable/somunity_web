@@ -54,5 +54,7 @@
             uPw = data.password;
         res.send(uId + ' ' + uPw);
     });
-
+    router.get("/userlist", function (req, res) {
+        controller.listAll(req,res);
+    });
     module.exports = router;

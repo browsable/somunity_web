@@ -10,7 +10,7 @@
             if(err){
                 console.log("connection 획득 실패!");
             }else{
-                conn.query("select * from persons",function(err, result, field){
+                conn.query("select * from users",function(err, result, field){
                     if(err){
                         console.log("SQL에 문제가 있음");
                     }else{
