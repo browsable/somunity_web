@@ -26,10 +26,10 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Library Management System</a>
+            <a class="navbar-brand" href="/">Somunity Management System</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-            <form class="navbar-form navbar-right" action="list" method="post">
+            <form class="navbar-form navbar-right" action="userview" method="post">
                 <input type="text" name="keyword" class="form-control" placeholder="Search..." onkeyup="sendData()">
             </form>
         </div>
@@ -40,24 +40,22 @@
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
-                <li class="active"><a href="#">Book List<span class="sr-only">(current)</span></a></li>
-                <li><a href="#">Book Register</a></li>
-                <li><a href="#">Book Delete</a></li>
-                <li><a href="#">Book Update</a></li>
+                <li class="active"><a href="#">User List<span class="sr-only">(current)</span></a></li>
+                <li><a href="#">User Register</a></li>
+                <li><a href="#">User Delete</a></li>
+                <li><a href="#">User Update</a></li>
             </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <h1 class="page-header">Book List</h1>
+            <h1 class="page-header">User List</h1>
 
             <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th>IMG</th>
-                        <th>제목</th>
-                        <th>ISBN</th>
-                        <th>가격</th>
-                        <th>저자</th>
+                        <th>번호</th>
+                        <th>이름</th>
+                        <th>미래기술 스터디</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -65,11 +63,9 @@
                     for(var i=0; i<data.length; i++){
                     %>
                     <tr>
-                        <td><img src=<%=data[i].bimgurl%>></td>
-                        <td><%=data[i].btitle%></td>
-                        <td><%=data[i].bisbn%></td>
-                        <td><%=data[i].bprice%></td>
-                        <td><%=data[i].bauthor%></td>
+                        <td><%=data[i].id%></td>
+                        <td><%=data[i].name%></td>
+                        <td><%=data[i].study%></td>
                     </tr>
                     <%
                     }

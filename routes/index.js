@@ -24,19 +24,11 @@
         );
         res.end();
     });
-    router.get("/user", function (req, res) {
-        res.send('Hello World');
-        res.writeHead(301,
-            {Location: 'https://play.google.com/store/apps/details?id=com.soma.daemin'}
-        );
-        res.end();
-        //controller.listAll(req,res);
-    });
-    router.get("/config", function (req, res) {
+    router.get("/configview", function (req, res) {
         res.send('Hello World');
         //controller.listAll(req,res);
     });
-    router.get("/chat", function (req, res) {
+    router.get("/chatview", function (req, res) {
         res.writeHead(301,
             {Location: 'https://somaslack.firebaseapp.com/'}
         );
@@ -54,7 +46,10 @@
             uPw = data.password;
         res.send(uId + ' ' + uPw);
     });
-    router.get("/userlist", function (req, res) {
+    router.get("/userview", function (req, res) {
         controller.listAll(req,res);
+    });
+    router.post("/userview", function (req, res) {
+        controller.listSearch(req,res);
     });
     module.exports = router;

@@ -15,7 +15,7 @@
                         console.log("SQL에 문제가 있음");
                     }else{
                         //console.log(result);
-                        res.render("list",{
+                        res.render("userview",{
                             data : result
                         });
                     }
@@ -32,7 +32,7 @@
             console.log("connection 획득 실패!");
         }else{
             console.log(keyword);
-            var sql = "select * from persons where name like ?";
+            var sql = "select * from users where name like ?";
             var param = [ "%" + keyword + "%"];
             sql = mysql.format(sql,param);
             conn.query(sql,function(err, result, field){
@@ -40,7 +40,7 @@
                     console.log("SQL에 문제가 있음");
                 }else{
                     //console.log(result);
-                    res.render("list",{
+                    res.render("userview",{
                         data : result
                     });
                 }
