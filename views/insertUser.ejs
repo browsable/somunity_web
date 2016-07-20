@@ -35,19 +35,46 @@
         </div>
     </div>
 </nav>
+<script>
+    var xmlHttp;
 
+    function createXMLHttpRequest() {
+        if(window.ActiveXObject) {
+            xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+        } else if(window.XMLHttpRequest) {
+            xmlHttp = new XMLHttpRequest();
+        }
+    }
+    function reqHTTP(href, method) {
+        createXMLHttpRequest();
+        var url = location.href;
+        url = url.substr(0, url.lastIndexOf('/'));
+        url += href;
+        xmlHttp.onreadystatechange = function() {
+            if(xmlHttp.readyState == 4) {
+                if(xmlHttp.status == 200) {
+                    document.open();
+                    document.write(xmlHttp.responseText);
+                }
+            }
+        };
+        xmlHttp.open(method, url, true);
+        xmlHttp.send(null);
+    }
+
+</script>
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
-                <li><a href="/users" method="get">User List</a></li>
-                <li class="active"><a href="/users" method="post">User Register<span class="sr-only">(current)</span></a></li>
-                <li><a href="/users" method="put">User Update</a></li>
-                <li><a href="/users" method="delete">User Delete</a></li>
+                <li><a href="#" onclick="reqHTTP('/users', 'GET')">User List</a></li>
+                <li class="active"><a href="#" onclick="reqHTTP('/users', 'POST')">User Register<span class="sr-only">(current)</span></a></li>
+                <li><a href="#" onclick="reqHTTP('/users', 'PUT')">User Update</a></li>
+                <li><a href="#" onclick="reqHTTP('/users', 'DELETE')">User Delete</a></li>
             </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <h1 class="page-header">User Register</h1>
+            <h1 class="page-header">User List</h1>
 
             <div class="table-responsive">
                 <table class="table table-striped">

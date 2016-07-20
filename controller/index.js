@@ -70,7 +70,7 @@
             if (err) {
                 console.log("connection 획득 실패!");
             } else {
-                conn.query("delete from users where id=?", function (err, result, field) {
+                conn.query("delete from users where id =2", function (err, result, field) {
                     if (err) {
                         console.log("SQL에 문제가 있음");
                     } else {

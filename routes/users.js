@@ -8,11 +8,9 @@ router.post("/", function (req, res) {
     controller.insertUser(req,res);
 });
 router.put("/", function (req, res) {
-    res.send("put");
-    //controller.updateUser(req,res);
+    controller.updateUser(req,res);
 });
 router.delete("/", function (req, res) {
-    res.send("delete");
-    //controller.deleteUser(req,res);
+    controller.deleteUser(req,res);
 });
 module.exports = router;
