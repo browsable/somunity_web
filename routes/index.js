@@ -4,13 +4,16 @@
 
     //routing 처리
     var express = require("express"),
-        router = express.Router(),
-        controller = require("../controller");
+        controller = require("../controller"),
+        router = express.Router();
 
     router.get("/", function (req, res) {
         res.render("index",{
             title : "Somunity Management System"
         })
+    });
+    router.get("/loginSuccess", function (req, res) {
+        res.render("loginSuccess",{})
     });
     router.get("/more", function (req, res) {
         res.writeHead(301,
@@ -25,8 +28,7 @@
         res.end();
     });
     router.get("/configView", function (req, res) {
-        res.send('Hello World');
-        //controller.listAll(req,res);
+        res.render("configView");
     });
     router.get("/chatView", function (req, res) {
         res.writeHead(301,
@@ -39,12 +41,19 @@
         res.send('Coming soon');
         //controller.listAll(req,res);
     });
-
-    router.post("/login",function (req, res){
-        var data = bodyparser.urlencoded(req);
-        var uId = data.id,
-            uPw = data.password;
-        res.send(uId + ' ' + uPw);
+    router.get("/login",function (req, res){
+        res.render("loginSuccess",{});
     });
-
+    router.post("/login",function (req, res){
+        var uId = req.body.id;
+        var uPw = req.body.password;
+        if(uId=='admin'&&uPw=='1234')
+            res.render("loginSuccess",{});
+        else
+            res.render("index",{});
+    });
+    router.post("/search", function (req, res) {
+        var keyword = req.body.keyword;
+        controller.listSearch(req,res,keyword);
+    });
     module.exports = router;
