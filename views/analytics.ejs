@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="js/XMLHttpRequest.js"></script>
+    <script>
+        $(function () {
+            $('#container').highcharts({
+                title: {
+                    text: '앱 사용자 추이',
+                    x: -20 //center
+                },
+                subtitle: {
+                    text: '시간에 따른 사용자 현황',
+                    x: -20
+                },
+                xAxis: {
+                    categories: ['7/15', '7/16', '7/17', '7/18', '7/19', '7/20','7/21','7/22']
+                },
+                yAxis: {
+                    title: {
+                        text: '사용자 설치 수'
+                    },
+                    plotLines: [{
+                        value: 0,
+                        width: 1,
+                        color: '#808080'
+                    }]
+                },
+                legend: {
+                    layout: 'vertical',
+                    align: 'right',
+                    verticalAlign: 'middle',
+                    borderWidth: 0
+                },
+                series: [{
+                    name: '전체',
+                    data: [0, 1, 1, 2, 2, 3, 3, 3]
+                }, {
+                    name: '일',
+                    data: [0,1,0,1,0,1,0,0]
+                }]
+            });
+        });
+        function sendData(){
+            if(event.keyCode == 13){
+                $("form").submit();
+            }
+        }
+        $(function () {
+            // Set up the chart
+            var chart = new Highcharts.Chart({
+                chart: {
+                    renderTo: 'container3d',
+                    type: 'column',
+                    options3d: {
+                        enabled: true,
+                        alpha: 15,
+                        beta: 15,
+                        depth: 50,
+                        viewDistance: 25
+                    }
+                },
+                title: {
+                    text: '연령별 앱 사용자'
+                },
+                subtitle: {
+                    text: '연령에 따른 앱 사용자 현황'
+                },
+                plotOptions: {
+                    column: {
+                        depth: 10
+                    }
+                },
+                yAxis: {
+                    title: {
+                        text: '사용자 설치 수'
+                    }
+                },
+                xAxis: {
+                    categories: ['10대', '20대', '30대', '40대', '50대', '60대','70대','80대']
+                },
+                series: [{
+                    data: [0,5,0,0,0,0,0,0]
+                }]
+            });
+
+            function showValues() {
+                $('#alpha-value').html(chart.options.chart.options3d.alpha);
+                $('#beta-value').html(chart.options.chart.options3d.beta);
+                $('#depth-value').html(chart.options.chart.options3d.depth);
+            }
+
+            // Activate the sliders
+            $('#sliders input').on('input change', function () {
+                chart.options.chart.options3d[this.id] = this.value;
+                showValues();
+                chart.redraw(false);
+            });
+
+            showValues();
+        });
+    </script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+    <link href="/stylesheets/jumbotron.css" rel="stylesheet">
+    <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+    <link href="/stylesheets/dashboard.css" rel="stylesheet">
+    <script src="/js/bootstrap.min.js"></script>
+    <title>Somunity Management System</title>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="javascript:void(0)" onclick="reqHTTP('/login', 'PUT')">Somunity Management System</a>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <ul class="nav nav-sidebar">
+                <li class="active"><a href="javascript:void(0)" onclick="reqHTTP('/con', 'GET')">Analytics<span class="sr-only">(current)</span></a></li>
+            </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <div id="container" style="min-width: 210px; height: 400px; margin: 0 auto"></div>
+            <div id="container3d" style="min-width: 210px; height: 400px; margin: 0 auto"></div>
+            <div id="sliders">
+                <table>
+                    <tr>
+                        <td>Alpha Angle</td>
+                        <td><input id="alpha" type="range" min="0" max="45" value="15"/> <span id="alpha-value" class="value"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Beta Angle</td>
+                        <td><input id="beta" type="range" min="-45" max="45" value="15"/> <span id="beta-value" class="value"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Depth</td>
+                        <td><input id="depth" type="range" min="20" max="100" value="50"/> <span id="depth-value" class="value"></span></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200" preserveAspectRatio="none" style="visibility: hidden; position: absolute; top: -100%; left: -100%;"><defs></defs><text x="0" y="10" style="font-weight:bold;font-size:10pt;font-family:Arial, Helvetica, Open Sans, sans-serif;dominant-baseline:middle">200x200</text></svg></body>
+</html>

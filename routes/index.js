@@ -27,10 +27,10 @@
         );
         res.end();
     });
-    router.get("/configView", function (req, res) {
-        res.render("configView");
+    router.get("/analytics", function (req, res) {
+        res.render("analytics");
     });
-    router.get("/chatView", function (req, res) {
+    router.get("/chat", function (req, res) {
         res.writeHead(301,
             {Location: 'https://somaslack.firebaseapp.com/'}
         );
