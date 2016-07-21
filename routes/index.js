@@ -42,7 +42,7 @@
         //controller.listAll(req,res);
     });
     router.get("/login",function (req, res){
-        res.render("loginSuccess",{});
+        res.render("index",{});
     });
     router.post("/login",function (req, res){
         var uId = req.body.id;
@@ -51,6 +51,9 @@
             res.render("loginSuccess",{});
         else
             res.render("index",{});
+    });
+    router.put("/login",function (req, res){
+        res.render("loginSuccess",{});
     });
     router.post("/search", function (req, res) {
         var keyword = req.body.keyword;
