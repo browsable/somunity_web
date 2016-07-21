@@ -12,7 +12,7 @@
             title : "Somunity Management System"
         })
     });
-    router.get("/loginSuccess", function (req, res) {
+    router.get("/loginSuccess", function (req, res){
         res.render("loginSuccess",{})
     });
     router.get("/more", function (req, res) {
