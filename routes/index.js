@@ -4,11 +4,8 @@
 
     //routing 처리
     var express = require("express"),
-        FCM = require("fcm-node"),
         controller = require("../controller"),
         router = express.Router();
-    var serverKey='AIzaSyCr7G2QlSJbZI8L4oC7GyoC-m7GoPjo2ZM';
-    var fcm = new FCM(serverKey);
 
     router.get("/", function (req, res) {
         res.render("index",{

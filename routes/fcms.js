@@ -5,16 +5,15 @@
     //routing 처리
     var express = require("express"),
         FCM = require("fcm-node"),
-        controller = require("../controller"),
         router = express.Router();
     var serverKey='AIzaSyCr7G2QlSJbZI8L4oC7GyoC-m7GoPjo2ZM';
     var fcm = new FCM(serverKey);
 
     //request from android app
     router.route('/').post(function (req, res) {
-        var registration_token = req.body.registration_token,
-            name = req.body.name,
-            tag = req.body.tag;
+        var registration_token = req.params.registration_token,
+            name = req.params.name,
+            tag = req.params.tag;
         console.log(registration_token);
         console.log(name);
         console.log(tag);
