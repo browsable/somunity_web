@@ -15,6 +15,11 @@
     "serve-favicon": "~2.3.0",
     "mysql":" ~2.11.1",
     "generic-pool":"*",
-    "fcm-node":"~1.0.7"
+    "fcm-node":"~1.0.7",
+    "method-override":"2.3.5",
+    "express-validator": "0.4.1",
+    "formidable" : "1.0.15",
+    "fs-extra" : "0.12.0",
+    "util" : "0.10.3"
   }
 }
