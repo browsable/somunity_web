@@ -16,6 +16,8 @@ var fcm = new FCM(serverKey);
 router.post("/", function (req, res) {
     var registration_token = req.body.registration_token,
         name = req.body.name;
+    console.log(registration_token);
+    console.log(name);
     var message = {
         to: registration_token, // required fill with device token or topics
         collapse_key: 'invite_msg',
