@@ -9,7 +9,7 @@
         fs = require('fs-extra'),
         util = require('util'),
         path = require('path'),
-        router = express.Router();
+        router = express.Router();//g
     var serverKey='AIzaSyCr7G2QlSJbZI8L4oC7GyoC-m7GoPjo2ZM';
     var fcm = new FCM(serverKey);
 
