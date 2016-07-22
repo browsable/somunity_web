@@ -11,13 +11,13 @@
 
     //request from android app
     router.route('/').post(function (req, res) {
-        var registration_token = req.params.registration_token,
-            name = req.params.name,
-            tag = req.params.tag;
+        var registration_token = req.body.registration_token,
+            name = req.body.name,
+            tag = req.body.tag;
         console.log(registration_token);
         console.log(name);
         console.log(tag);
-        if (tag === "fcm") {
+        if (tag == "fcm") {
             if (errors) {
                 res.json({message: errors});
             } else {
