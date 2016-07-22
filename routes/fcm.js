@@ -11,7 +11,7 @@
     var fcm = new FCM(serverKey);
 
     //request from android app
-    router.post('/',function (req, res) {
+    router.route('/').post(function (req, res) {
         var registration_token = req.body.registration_token,
             name = req.body.name,
             tag = req.body.tag;
