@@ -16,17 +16,15 @@ var fcm = new FCM(serverKey);
 router.post("/", function (req, res) {
     var registration_token = req.body.registration_token,
         name = req.body.name;
-    console.log(registration_token);
-    console.log(name);
     var message = {
         to: registration_token, // required fill with device token or topics
         collapse_key: 'invite_msg',
         data: {
-            msg: name+'invite you'
+            msg: name+' invite you'
         },
         notification: {
-            title: 'Title of your push notification',
-            body: 'Body of your push notification'
+            title: '친구 요청이 있습니다.',
+            body: name+'님이 친구 신청하였습니다'
         }
     };
 
