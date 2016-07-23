@@ -163,19 +163,19 @@ exports.listSearch = function (req, res, keyword) {
     });
 };
 
-exports.cntUpdate = function () {
+exports.cntUpdate = function (req, res) {
     // 로직처리 ( DB처리 )
     pool.acquire(function (err, conn) {
         if (err) {
             console.log("connection 획득 실패!");
         } else {
-            var sql = "update analytics set dailycnt=dailycnt+1";
+            var sql = "update analytics set cnt=cnt+1";
             conn.query(sql, function (err, result, field) {
                 if (err) {
                     console.log("SQL에 문제가 있음");
                 } else {
                     console.log("Count Up Success");
-                    res.send('Count Up Success');
+                    res.send(result)
                 }
             });
         }

@@ -9,8 +9,8 @@ var express = require("express"),
 
 
 //request from android app
-router.get("/", function () {
-    controller.cntUpdate();
+router.get("/", function (req,res) {
+    controller.cntUpdate(req,res);
 });
 
 module.exports = router;
